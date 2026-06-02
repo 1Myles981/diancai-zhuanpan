@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(mkdir -p \"d:/项目/点菜小程序/utils\" \"d:/项目/点菜小程序/components/wheel\" \"d:/项目/点菜小程序/pages/index\" \"d:/项目/点菜小程序/pages/add\" \"d:/项目/点菜小程序/pages/list\")",
+      "Bash(python -m http.server 8080)",
+      "Bash(ipconfig)",
+      "Bash(awk '{print $NF}')",
+      "Bash(node -e \"var fs=require\\('fs'\\); var html=fs.readFileSync\\('点菜转盘.html','utf8'\\); var s=html.indexOf\\('<script>'\\); var e=html.lastIndexOf\\('</script>'\\); var js=html.substring\\(s+8,e\\); try{new Function\\(js\\); console.log\\('JS syntax OK'\\)}catch\\(err\\){console.log\\('Syntax error:',err.message\\)}\")",
+      "Bash(netstat -ano)",
+      "Bash(python -m http.server 8080 --bind 0.0.0.0)",
+      "Bash(curl -s http://localhost:8080/点菜转盘.html)",
+      "Bash(curl -s \"http://localhost:8080/\")",
+      "Bash(curl -s \"http://localhost:8080/%E7%82%B9%E8%8F%9C%E8%BD%AC%E7%9B%98.html\")",
+      "WebFetch(domain:localhost)",
+      "Read(//c/Users/Myles/Downloads/**)",
+      "Bash(base64 -w 0 \"C:\\\\Users\\\\Myles\\\\Downloads\\\\蜡笔.png\")",
+      "Read(//tmp/**)",
+      "Bash(B64=$\\(base64 -w 0 \"C:\\\\Users\\\\Myles\\\\Downloads\\\\蜡笔.png\" 2>/dev/null\\) *)",
+      "Bash(node -e ' *)",
+      "Bash(perl -e ' *)",
+      "Bash(gh auth *)",
+      "Bash(winget install *)",
+      "Bash(scoop install *)",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ],
+    "additionalDirectories": [
+      "d:\\项目\\点菜小程序",
+      "\\tmp"
+    ]
+  }
+}
