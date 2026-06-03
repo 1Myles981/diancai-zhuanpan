@@ -428,6 +428,13 @@ button {
   border: 2px solid #E0E0E0;
 }
 
+.btn-help {
+  background: #F5F0EB;
+  color: #8B7355;
+  border: 2px solid #E0D8CC;
+  font-size: 13px !important;
+}
+
 /* ========================================
    欢迎页（无菜品时显示）
    ======================================== */
@@ -552,66 +559,6 @@ button {
   font-size: 16px;
   font-weight: 600;
   margin-top: 12px;
-}
-
-/* 语音输入按钮 */
-.voice-wrap {
-  position: relative;
-}
-
-.voice-btn {
-  position: absolute;
-  right: 8px;
-  top: 8px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #F0F0F0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  transition: all 0.2s;
-  z-index: 2;
-  border: 2px solid transparent;
-}
-
-.voice-btn:active {
-  transform: scale(0.9);
-}
-
-.voice-btn.listening {
-  background: #3D5A80;
-  color: #fff;
-  border-color: #3D5A80;
-  animation: pulse 0.8s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(61, 90, 128, 0.4); }
-  50%      { box-shadow: 0 0 0 12px rgba(231, 76, 60, 0); }
-}
-
-.voice-btn.listening::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: rgba(61, 90, 128, 0.3);
-  animation: ripple 1.2s infinite;
-}
-
-@keyframes ripple {
-  0%   { transform: scale(1); opacity: 1; }
-  100% { transform: scale(2); opacity: 0; }
-}
-
-.voice-hint {
-  font-size: 11px;
-  color: #bbb;
-  margin-top: 2px;
-  padding-left: 2px;
 }
 
 /* ========================================
@@ -1106,6 +1053,62 @@ button {
   color: #B85042;
 }
 
+/* 使用说明弹窗内容 */
+.help-card {
+  max-width: 420px;
+  text-align: left;
+}
+.help-section {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #F0EFE8;
+}
+.help-section:last-child {
+  border-bottom: none;
+}
+.help-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #3D5A80;
+  margin-bottom: 8px;
+}
+.help-section p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.8;
+  margin: 4px 0;
+}
+.help-section ul, .help-section ol {
+  margin: 6px 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.8;
+}
+.help-section li {
+  margin-bottom: 2px;
+}
+.help-section code {
+  background: #F0EFE8;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #3D5A80;
+}
+.help-warning {
+  background: #FFF8F0;
+  border: 1px solid #F0D8A0;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+.help-warning .help-section-title {
+  color: #C08030;
+}
+.help-warning p, .help-warning li {
+  color: #6B5020;
+}
+
 /* ========================================
    顶部导航栏
    ======================================== */
@@ -1202,6 +1205,64 @@ button {
   </div>
 </div>
 
+<!-- 使用说明弹窗 -->
+<div class="modal-mask" id="helpModal" style="display:none">
+  <div class="modal-card help-card">
+    <div style="text-align:center;font-size:40px;margin-bottom:4px">📖</div>
+    <div style="text-align:center;font-size:20px;font-weight:700;color:#333;margin-bottom:20px">使用说明</div>
+
+    <div class="help-section">
+      <div class="help-section-title">🎡 怎么用</div>
+      <p>点击底部 <b>"+ 添加菜品"</b> 录入你的拿手菜，填写菜名、选择分类（荤菜/素菜/汤），食材和步骤可选填。</p>
+      <p>返回首页，点击转盘中间的 <b>GO</b> 按钮，转盘会随机停在一道菜上 —— 今天吃什么就交给它决定！</p>
+      <p>顶部 <b>荤菜 / 素菜 / 汤</b> 三个 Tab 可以切换不同分类的转盘，也可以切换到 <b>"手动搭配"</b> 模式从每个分类各选一道。</p>
+    </div>
+
+    <div class="help-section">
+      <div class="help-section-title">💾 数据存在哪里</div>
+      <p>菜谱数据保存在<b>浏览器的本地存储</b>中，不会上传到任何服务器。这意味着：</p>
+      <ul>
+        <li>在同一浏览器中打开，数据始终存在</li>
+        <li>换一个浏览器（如从 Safari 换到 Chrome），数据不会同步</li>
+        <li>清除浏览器数据会导致菜谱丢失</li>
+      </ul>
+    </div>
+
+    <div class="help-section help-warning">
+      <div class="help-section-title">⚠️ iPhone / iPad 用户请注意</div>
+      <p>如果你把本页面<b>添加到主屏幕</b>（书签/桌面快捷方式），iOS 会为它创建一个独立的存储空间，<b>与 Safari 浏览器中的存储互不相通</b>。</p>
+      <p>也就是说：</p>
+      <ul>
+        <li>在 Safari 里添加的菜谱，<b>主屏幕书签里看不到</b></li>
+        <li>在主屏幕书签里添加的菜谱，<b>Safari 里也看不到</b></li>
+        <li>删除主屏幕书签会<b>永久丢失</b>该书签中的菜谱数据</li>
+      </ul>
+      <p style="margin-bottom:0">建议：<b>固定在一个入口使用</b>（要么一直用浏览器，要么一直用主屏幕书签），避免数据分散。</p>
+    </div>
+
+    <div class="help-section">
+      <div class="help-section-title">📦 如何备份 / 迁移数据</div>
+      <p>如需更换浏览器、更换设备、或从浏览器切换到主屏幕书签，请使用导出/导入功能：</p>
+      <ol>
+        <li>在原入口点击 <b>"📦 导出"</b>，会下载一个 <code>.json</code> 备份文件</li>
+        <li>在新入口打开页面，进入 <b>"☰ 菜品列表"</b> → 点击 <b>"📥 导入"</b></li>
+        <li>选择刚才下载的备份文件即可恢复全部菜谱</li>
+      </ol>
+      <p style="margin-bottom:0">导入时可选择<b>替换</b>（覆盖现有数据）或<b>合并</b>（保留已有 + 新增导入），重名菜品会自动跳过。</p>
+    </div>
+
+    <div class="help-section">
+      <div class="help-section-title">🔤 批量导入</div>
+      <p>在菜品列表页点击 <b>"批量导入"</b>，可以按特定格式粘贴多道菜一次性导入，适合从其他地方整理好的菜谱快速录入。</p>
+    </div>
+
+    <button class="btn-primary" style="width:100%;height:44px;border-radius:22px;margin-top:8px;font-size:15px;font-weight:600" onclick="closeHelp()">知道了</button>
+  </div>
+</div>
+
+<!-- 隐藏的文件选择器，用于 JSON 导入 -->
+<input type="file" id="jsonFileInput" accept=".json" style="display:none" onchange="handleJsonImport(event)">
+
 <!-- ========================================
      首页
      ======================================== -->
@@ -1263,7 +1324,9 @@ button {
     <div class="bottom-nav">
       <button class="btn-primary" onclick="showPage('add')">+ 添加菜品</button>
       <button class="btn-outline" onclick="showPage('list')">☰ 菜品列表</button>
+      <button class="btn-outline" onclick="exportRecipes()">📦 导出</button>
       <button class="btn-outline" onclick="showPage('history')">📋 记录</button>
+      <button class="btn-help" onclick="showHelp()">? 使用说明</button>
     </div>
   </div>
 </div>
@@ -1279,10 +1342,7 @@ button {
 
   <div class="form-group">
     <label>菜名 <span class="req">*</span></label>
-    <div class="voice-wrap">
-      <input class="form-input" id="fName" placeholder="请输入菜名（最多20字）" maxlength="20">
-      <button class="voice-btn" id="voice-fName" onclick="startVoice('fName')" title="语音输入">🎤</button>
-    </div>
+    <input class="form-input" id="fName" placeholder="请输入菜名（最多20字）" maxlength="20">
   </div>
 
   <div class="form-group">
@@ -1292,19 +1352,12 @@ button {
 
   <div class="form-group">
     <label>食材</label>
-    <div class="voice-wrap">
-      <textarea class="form-textarea" id="fIng" placeholder="如：排骨500g、生抽、老抽..."></textarea>
-      <button class="voice-btn" id="voice-fIng" onclick="startVoice('fIng')" title="语音输入">🎤</button>
-    </div>
+    <textarea class="form-textarea" id="fIng" placeholder="如：排骨500g、生抽、老抽..."></textarea>
   </div>
 
   <div class="form-group">
     <label>做法步骤</label>
-    <div class="voice-wrap">
-      <textarea class="form-textarea" id="fStep" placeholder="1. 排骨焯水&#10;2. 炒糖色..."></textarea>
-      <button class="voice-btn" id="voice-fStep" onclick="startVoice('fStep')" title="语音输入">🎤</button>
-    </div>
-    <div class="voice-hint">💡 说"换行"即可换行，说"句号"输入标点</div>
+    <textarea class="form-textarea" id="fStep" placeholder="1. 排骨焯水&#10;2. 炒糖色..."></textarea>
   </div>
 
   <button class="btn-save" onclick="saveRecipe()">保存</button>
@@ -1321,6 +1374,9 @@ button {
     <button class="btn-outline"
             style="margin-left:auto;height:32px;line-height:32px;padding:0 12px;border-radius:16px;font-size:12px"
             onclick="openImport()">批量导入</button>
+    <button class="btn-outline"
+            style="height:32px;line-height:32px;padding:0 12px;border-radius:16px;font-size:12px"
+            onclick="importRecipes()">📥 导入</button>
     <button class="btn-primary"
             style="height:32px;line-height:32px;padding:0 14px;border-radius:16px;font-size:13px"
             onclick="showPage('add')">+ 添加</button>
@@ -1532,166 +1588,7 @@ function showPage(page, data) {
 
 /*
  * ==========================================
- * 四、语音输入
- *
- * 使用浏览器内置的 Web Speech API
- * Chrome / Edge / Android WebView 支持
- * iOS Safari 16.4+ 也支持
- * ==========================================
- */
-
-var recognition = null;        // 语音识别实例
-var voiceTargetId = null;      // 当前正在录入的输入框 ID
-var voiceSupported = false;    // 浏览器是否支持语音输入
-
-/** 检查浏览器是否支持语音输入 */
-function checkVoiceSupport() {
-  var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  voiceSupported = !!SpeechRecognition;
-  return voiceSupported;
-}
-
-/** 初始化语音识别（懒加载） */
-function getRecognition() {
-  if (!voiceSupported) return null;
-  if (!recognition) {
-    var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    recognition = new SpeechRecognition();
-    recognition.lang = 'zh-CN';
-    recognition.interimResults = true;
-    recognition.continuous = false;
-    recognition.maxAlternatives = 1;
-  }
-  return recognition;
-}
-
-/**
- * 开始语音录入
- * @param {string} inputId - 目标输入框的 ID：'fName' | 'fIng' | 'fStep'
- */
-function startVoice(inputId) {
-  var rec = getRecognition();
-  if (!rec) return;
-
-  // 如果正在对同一个输入框录音，则停止
-  if (voiceTargetId === inputId) {
-    stopVoice();
-    return;
-  }
-
-  // 停止之前的录音
-  if (voiceTargetId) {
-    rec.abort();
-    updateVoiceBtn(voiceTargetId, false);
-  }
-
-  voiceTargetId = inputId;
-  updateVoiceBtn(inputId, true);
-
-  var el = document.getElementById(inputId);
-  var tag = el.tagName.toLowerCase();
-  var prevValue = el.value;
-
-  // 处理识别结果
-  rec.onresult = function (event) {
-    var transcript = '';
-    for (var i = event.resultIndex; i < event.results.length; i++) {
-      transcript += event.results[i][0].transcript;
-    }
-
-    // 将口语关键词替换为标点/换行
-    transcript = normalizeVoiceText(transcript);
-
-    // input（菜名）：只取一句话，替换掉原有内容
-    // textarea（食材/步骤）：追加到已有内容后面
-    if (tag === 'input') {
-      el.value = transcript;
-    } else {
-      // 如果已有内容且不是以换行结尾，先加个分隔
-      var suffix = (prevValue && prevValue.slice(-1) !== '\n') ? '\n' : '';
-      el.value = prevValue + suffix + transcript;
-    }
-  };
-
-  // 录音自动结束
-  rec.onend = function () {
-    updateVoiceBtn(inputId, false);
-    if (voiceTargetId === inputId) voiceTargetId = null;
-  };
-
-  // 出错
-  rec.onerror = function (event) {
-    updateVoiceBtn(inputId, false);
-    if (voiceTargetId === inputId) voiceTargetId = null;
-    if (event.error === 'not-allowed') {
-      toast('请允许麦克风权限');
-    } else if (event.error !== 'aborted') {
-      toast('语音识别出错，请重试');
-    }
-  };
-
-  rec.start();
-}
-
-/** 停止语音录入 */
-function stopVoice() {
-  if (recognition) {
-    try { recognition.abort(); } catch (e) {}
-  }
-  if (voiceTargetId) {
-    updateVoiceBtn(voiceTargetId, false);
-    voiceTargetId = null;
-  }
-}
-
-/** 更新麦克风按钮状态 */
-function updateVoiceBtn(inputId, listening) {
-  var btn = document.getElementById('voice-' + inputId);
-  if (!btn) return;
-  if (listening) {
-    btn.classList.add('listening');
-    btn.textContent = '⏹';
-  } else {
-    btn.classList.remove('listening');
-    btn.textContent = '🎤';
-  }
-}
-
-/**
- * 将语音识别的口语文本转换为可读格式
- * 比如："红烧排骨换行第一步焯水" → "红烧排骨\n1. 焯水"
- */
-function normalizeVoiceText(text) {
-  var map = {
-    '换行': '\n',
-    '句号': '。',
-    '逗号': '，',
-    '顿号': '、',
-    '问号': '？',
-    '感叹号': '！',
-    '冒号': '：',
-    '分号': '；',
-    '括号': '（',
-    '完括号': '）',
-    '点': '.',
-    '空格': ' ',
-    '下一行': '\n',
-    '另起一行': '\n'
-  };
-
-  var result = text;
-  Object.keys(map).forEach(function (keyword) {
-    // 用 split + join 实现全局替换
-    result = result.split(keyword).join(map[keyword]);
-  });
-
-  return result;
-}
-
-
-/*
- * ==========================================
- * 五、Toast 提示
+ * 四、Toast 提示
  * ==========================================
  */
 function toast(msg) {
@@ -1706,7 +1603,7 @@ function toast(msg) {
 
 /*
  * ==========================================
- * 六、首页
+ * 五、首页
  * ==========================================
  */
 
@@ -2074,7 +1971,7 @@ function confirmManual() {
 
 /*
  * ==========================================
- * 七、Canvas 转盘（核心）
+ * 六、Canvas 转盘（核心）
  * ==========================================
  */
 
@@ -2260,7 +2157,7 @@ function calcMaxChars(count) {
 
 /*
  * ==========================================
- * 八、旋转动画
+ * 七、旋转动画
  * ==========================================
  */
 
@@ -2350,7 +2247,7 @@ function startSpin() {
 
 /*
  * ==========================================
- * 九、结果弹窗
+ * 八、结果弹窗
  * ==========================================
  */
 
@@ -2385,6 +2282,21 @@ function closeModal() {
   document.getElementById('modal').style.display = 'none';
 }
 
+function showHelp() {
+  document.getElementById('helpModal').style.display = '';
+}
+
+function closeHelp() {
+  document.getElementById('helpModal').style.display = 'none';
+}
+
+// 点击遮罩关闭帮助弹窗
+document.addEventListener('click', function (e) {
+  if (e.target === document.getElementById('helpModal')) {
+    closeHelp();
+  }
+});
+
 function reSpin() {
   closeModal();
   setTimeout(function () {
@@ -2406,7 +2318,7 @@ function goDetailFromModal() {
 
 /*
  * ==========================================
- * 十、添加 / 编辑菜品
+ * 九、添加 / 编辑菜品
  * ==========================================
  */
 
@@ -2448,17 +2360,6 @@ function renderAdd() {
     }
   }
 
-  // 不支持语音输入的浏览器 → 隐藏麦克风按钮和提示
-  if (!voiceSupported) {
-    document.getElementById('voice-fName').style.display = 'none';
-    document.getElementById('voice-fIng').style.display = 'none';
-    document.getElementById('voice-fStep').style.display = 'none';
-    // 隐藏语音提示（voice-hint 在 fStep 的 voice-wrap 外面，需要额外处理）
-    var hints = document.querySelectorAll('.voice-hint');
-    for (var j = 0; j < hints.length; j++) {
-      hints[j].style.display = 'none';
-    }
-  }
 }
 
 /** 选择一个分类 */
@@ -2543,7 +2444,7 @@ function deleteRecipe() {
 
 /*
  * ==========================================
- * 十一、菜品列表页
+ * 十、菜品列表页
  * ==========================================
  */
 
@@ -2666,7 +2567,7 @@ function showActionSheet(dish) {
 
 /*
  * ==========================================
- * 十一-B、批量导入
+ * 十-B、批量导入
  * ==========================================
  */
 
@@ -2745,7 +2646,95 @@ function doImport() {
 
 /*
  * ==========================================
- * 十二、菜品详情页
+ * 十-C、JSON 导入导出
+ * ==========================================
+ */
+
+/** 导出全部菜谱为 JSON 文件并下载 */
+function exportRecipes() {
+  var recipes = readAll();
+  if (recipes.length === 0) {
+    alert('还没有菜谱，请先添加菜品');
+    return;
+  }
+  var data = JSON.stringify(recipes, null, 2);
+  var blob = new Blob([data], { type: 'application/json' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = '点菜转盘备份_' + new Date().toISOString().slice(0, 10) + '.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+/** 触发文件选择器 */
+function importRecipes() {
+  document.getElementById('jsonFileInput').click();
+}
+
+/** 处理 JSON 文件导入 */
+function handleJsonImport(event) {
+  var file = event.target.files[0];
+  if (!file) return;
+
+  var reader = new FileReader();
+  reader.onload = function (e) {
+    try {
+      var imported = JSON.parse(e.target.result);
+      if (!Array.isArray(imported) || imported.length === 0) {
+        alert('文件格式不正确，请选择有效的菜谱备份文件');
+        return;
+      }
+      // 验证每个条目
+      for (var i = 0; i < imported.length; i++) {
+        if (!imported[i].name || !imported[i].category) {
+          alert('文件格式不正确（第' + (i + 1) + '条缺少必要字段）');
+          return;
+        }
+      }
+
+      var current = readAll();
+      if (confirm('发现 ' + imported.length + ' 道菜谱。\n\n点击"确定"替换现有全部菜谱\n点击"取消"合并到现有菜谱（保留已有+新增导入）')) {
+        // 替换：全部用导入的数据
+        writeAll(imported);
+        alert('已替换全部菜谱，共 ' + imported.length + ' 道');
+      } else {
+        // 合并：保留已有，只添加不重名的
+        var existingNames = {};
+        for (var j = 0; j < current.length; j++) {
+          existingNames[current[j].name] = true;
+        }
+        var added = 0;
+        for (var k = 0; k < imported.length; k++) {
+          if (!existingNames[imported[k].name]) {
+            current.push(imported[k]);
+            existingNames[imported[k].name] = true;
+            added++;
+          }
+        }
+        writeAll(current);
+        alert('已合并，新增 ' + added + ' 道菜谱（跳过 ' + (imported.length - added) + ' 道重名菜谱）');
+      }
+
+      // 刷新页面
+      renderList();
+      renderHome();
+    } catch (err) {
+      alert('文件解析失败，请选择有效的 JSON 文件');
+    }
+  };
+  reader.readAsText(file);
+
+  // 重置 file input，允许重复导入同一文件
+  event.target.value = '';
+}
+
+
+/*
+ * ==========================================
+ * 十一、菜品详情页
  * ==========================================
  */
 
@@ -2951,7 +2940,7 @@ document.addEventListener('touchend', function (e) {
 
 /*
  * ==========================================
- * 十三、全局初始化
+ * 十二、全局初始化
  * ==========================================
  */
 
@@ -3023,7 +3012,6 @@ window.addEventListener('resize', function () {
 })();
 
 // 启动应用
-checkVoiceSupport();
 renderHome();
 </script>
 </body>
