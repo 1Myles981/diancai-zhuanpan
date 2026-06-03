@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="点菜转盘">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">
 	<link rel="icon" sizes="192x192" href="apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <title>点菜转盘</title>
@@ -402,11 +405,17 @@ button {
 /* 底部操作栏 */
 .bottom-nav {
   display: flex;
-  gap: 14px;
+  flex-direction: column;
+  gap: 10px;
   margin-top: 28px;
 }
 
-.bottom-nav button {
+.bottom-nav-row {
+  display: flex;
+  gap: 14px;
+}
+
+.bottom-nav-row button {
   flex: 1;
   height: 48px;
   border-radius: 24px;
@@ -1322,11 +1331,15 @@ button {
 
     <!-- 底部操作按钮 -->
     <div class="bottom-nav">
-      <button class="btn-primary" onclick="showPage('add')">+ 添加菜品</button>
-      <button class="btn-outline" onclick="showPage('list')">☰ 菜品列表</button>
-      <button class="btn-outline" onclick="exportRecipes()">📦 导出</button>
-      <button class="btn-outline" onclick="showPage('history')">📋 记录</button>
-      <button class="btn-help" onclick="showHelp()">? 使用说明</button>
+      <div class="bottom-nav-row">
+        <button class="btn-primary" onclick="showPage('add')">+ 添加菜品</button>
+        <button class="btn-outline" onclick="showPage('list')">☰ 菜品列表</button>
+        <button class="btn-outline" onclick="exportRecipes()">📦 导出</button>
+      </div>
+      <div class="bottom-nav-row">
+        <button class="btn-outline" onclick="showPage('history')">📋 记录</button>
+        <button class="btn-help" onclick="showHelp()">? 使用说明</button>
+      </div>
     </div>
   </div>
 </div>
