@@ -2288,7 +2288,7 @@ function startSpin() {
   var targetMid = targetIdx * sliceAngle + sliceAngle / 2;
 
   // 计算落地角度：让目标扇形的中心对准顶部指针
-  var landingAngle = (Math.PI / 2 - targetMid);
+  var landingAngle = -targetMid;
   while (landingAngle < 0) landingAngle += 2 * Math.PI;
   landingAngle = landingAngle % (2 * Math.PI);
 
