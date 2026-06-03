@@ -2594,20 +2594,30 @@ function setFilter(key) {
 }
 
 // ------ 列表卡片交互 ------
-// 短按 → 进入详情
-// 长按（>500ms）→ 弹出操作菜单
+// 短按 → 进入详情（手指未移动才算点击）
+// 长按（>500ms 且未移动）→ 弹出操作菜单
 var listTouchStart = 0;
 var listTouchCard = null;
+var listTouchMoved = false;
 
 document.getElementById('recipeList').addEventListener('touchstart', function (e) {
   var card = e.target.closest('.recipe-card');
   if (!card) return;
   listTouchStart = Date.now();
   listTouchCard = card;
+  listTouchMoved = false;
+});
+
+document.getElementById('recipeList').addEventListener('touchmove', function (e) {
+  listTouchMoved = true; // 手指移动了，说明在滚动
 });
 
 document.getElementById('recipeList').addEventListener('touchend', function (e) {
-  if (!listTouchCard) return;
+  if (!listTouchCard || listTouchMoved) {
+    listTouchCard = null;
+    listTouchMoved = false;
+    return;
+  }
   var elapsed = Date.now() - listTouchStart;
   var id = listTouchCard.dataset.id;
 
@@ -2621,6 +2631,7 @@ document.getElementById('recipeList').addEventListener('touchend', function (e) 
     showPage('detail', id);
   }
   listTouchCard = null;
+  listTouchMoved = false;
 });
 
 /** 长按弹出操作菜单 */
