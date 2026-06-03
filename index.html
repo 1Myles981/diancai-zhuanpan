@@ -2485,6 +2485,22 @@ function saveRecipe() {
   var ingredients = document.getElementById('fIng').value.trim();
   var steps = document.getElementById('fStep').value.trim();
 
+  var recipes = readAll();
+
+  // 重名检测（新增时检查，编辑且菜名未变则不提示）
+  var dupIdx = -1;
+  for (var i = 0; i < recipes.length; i++) {
+    if (recipes[i].name === name && recipes[i].id !== editId) {
+      dupIdx = i;
+      break;
+    }
+  }
+  if (dupIdx >= 0) {
+    if (!confirm('该道美食已存在，是否继续？')) {
+      return;
+    }
+  }
+
   var recipe = {
     id: editId || genId(),
     name: name,
@@ -2493,8 +2509,6 @@ function saveRecipe() {
     steps: steps,
     createTime: Date.now()
   };
-
-  var recipes = readAll();
   var idx = recipes.findIndex(function (r) { return r.id === recipe.id; });
   if (idx >= 0) {
     recipes[idx] = recipe;
