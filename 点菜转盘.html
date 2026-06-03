@@ -276,30 +276,29 @@ button {
    ======================================== */
 .wheel-wrap {
   position: relative;
-  width: 320px;
-  height: 320px;
+  width: 380px;
+  height: 380px;
   margin: 0 auto;
 }
 
 /* 顶部三角形指针 */
 .wheel-wrap .pointer {
   position: absolute;
-  top: -8px;
+  top: -10px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 18px solid transparent;
-  border-right: 18px solid transparent;
-  border-top: 36px solid #8899AA;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 40px solid #8899AA;
   z-index: 10;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
   filter: drop-shadow(0 3px 4px rgba(0,0,0,0.2));
 }
 
 .wheel-wrap canvas {
-  width: 320px;
-  height: 320px;
+  width: 380px;
+  height: 380px;
 }
 
 /* 中间 GO 按钮 */
@@ -308,15 +307,12 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   background: rgba(255,255,255,0.9);
   border: 2px solid #B0B8BF;
-  font-size: 18px;
-  color: #8899AA;
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  font-size: 20px;
   font-weight: 800;
   color: #3D5A80;
   z-index: 5;
