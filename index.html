@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="点菜转盘">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233D5A80'/><circle cx='50' cy='48' r='30' fill='none' stroke='%23fff' stroke-width='5' opacity='0.9'/><line x1='50' y1='18' x2='50' y2='35' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><line x1='50' y1='61' x2='50' y2='78' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><line x1='20' y1='48' x2='37' y2='48' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><line x1='63' y1='48' x2='80' y2='48' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><line x1='28' y1='26' x2='41' y2='39' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><line x1='59' y1='57' x2='72' y2='70' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><line x1='28' y1='70' x2='41' y2='57' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><line x1='59' y1='39' x2='72' y2='26' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><circle cx='50' cy='48' r='8' fill='%23fff'/></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233D5A80'/><circle cx='50' cy='48' r='30' fill='none' stroke='%23fff' stroke-width='5' opacity='0.9'/><line x1='50' y1='18' x2='50' y2='35' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><line x1='50' y1='61' x2='50' y2='78' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><line x1='20' y1='48' x2='37' y2='48' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><line x1='63' y1='48' x2='80' y2='48' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><line x1='28' y1='26' x2='41' y2='39' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><line x1='59' y1='57' x2='72' y2='70' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><line x1='28' y1='70' x2='41' y2='57' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><line x1='59' y1='39' x2='72' y2='26' stroke='%23fff' stroke-width='3' stroke-linecap='round'/><circle cx='50' cy='48' r='8' fill='%23fff'/></svg>">
+	<link rel="icon" sizes="192x192" href="apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <title>点菜转盘</title>
 <style>
 /* ========================================
@@ -276,30 +276,29 @@ button {
    ======================================== */
 .wheel-wrap {
   position: relative;
-  width: 320px;
-  height: 320px;
+  width: 380px;
+  height: 380px;
   margin: 0 auto;
 }
 
 /* 顶部三角形指针 */
 .wheel-wrap .pointer {
   position: absolute;
-  top: -8px;
+  top: -10px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 18px solid transparent;
-  border-right: 18px solid transparent;
-  border-top: 36px solid #8899AA;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 40px solid #8899AA;
   z-index: 10;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
   filter: drop-shadow(0 3px 4px rgba(0,0,0,0.2));
 }
 
 .wheel-wrap canvas {
-  width: 320px;
-  height: 320px;
+  width: 380px;
+  height: 380px;
 }
 
 /* 中间 GO 按钮 */
@@ -308,15 +307,12 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   background: rgba(255,255,255,0.9);
   border: 2px solid #B0B8BF;
-  font-size: 18px;
-  color: #8899AA;
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  font-size: 20px;
   font-weight: 800;
   color: #3D5A80;
   z-index: 5;
